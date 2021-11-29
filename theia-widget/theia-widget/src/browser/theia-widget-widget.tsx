@@ -3,7 +3,7 @@ import { injectable, postConstruct, inject } from '@theia/core/shared/inversify'
 import { AlertMessage } from '@theia/core/lib/browser/widgets/alert-message';
 import { ReactWidget } from '@theia/core/lib/browser/widgets/react-widget';
 import { MessageService } from '@theia/core';
-// import {EditorManager} from '@theia/editor/lib/browser';
+import { ProblemManager } from '@theia/markers/lib/browser/problem/problem-manager';
 @injectable()
 export class TheiaWidgetWidget extends ReactWidget {
 
@@ -13,8 +13,8 @@ export class TheiaWidgetWidget extends ReactWidget {
     @inject(MessageService)
     protected readonly messageService!: MessageService;
 
-    // @inject(EditorManager)
-    // protected readonly editorManager: EditorManager;
+    @inject(ProblemManager)
+    protected readonly problemManager: ProblemManager;
     
     @postConstruct()
     protected async init(): Promise < void> {
